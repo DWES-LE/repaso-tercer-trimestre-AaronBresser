@@ -14,7 +14,12 @@ class Equipo(Page):
     # Database fields
 
     body = RichTextField()
-    date = models.DateField("Post date")
+    fundacion = models.DateField("Fecha fundación", blank=True, null=True)
+    pais = models.CharField(max_length=255, blank=True, null=True)
+    jefe_equipo = models.CharField(max_length=255, blank=True, null=True)
+    motor = models.CharField(max_length=255, blank=True, null=True)
+    pilotos = models.CharField(max_length=255, blank=True, null=True)
+    campeonatos = models.IntegerField(blank=True, null=True)
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -28,16 +33,26 @@ class Equipo(Page):
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),
-        index.FilterField('date'),
+        index.FilterField('fundacion'),
+        index.FilterField('pais'),
+        index.FilterField('jefe_equipo'),
+        index.FilterField('motor'),
+        index.FilterField('pilotos'),
+        index.FilterField('campeonatos'),
     ]
 
 
     # Editor panels configuration
 
     content_panels = Page.content_panels + [
-        FieldPanel('date'),
+        FieldPanel('fundacion'),
         FieldPanel('body'),
         FieldPanel('feed_image'),
+        FieldPanel('pais'),
+        FieldPanel('jefe_equipo'),
+        FieldPanel('motor'),
+        FieldPanel('pilotos'),
+        FieldPanel('campeonatos'),
     ]
 
 
