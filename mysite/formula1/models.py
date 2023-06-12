@@ -8,6 +8,7 @@ from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.search import index
 
 
+
 class Equipo(Page):
 
     # Database fields
@@ -38,7 +39,6 @@ class Equipo(Page):
         FieldPanel('body'),
         FieldPanel('feed_image'),
     ]
-
 
 
     # Parent page / subpage type rules

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "blog",
     "formula1",
+    "wagtail.contrib.settings",
 ]
 
 MIDDLEWARE = [
