@@ -2,9 +2,11 @@
 {% block body_class %}page-flex{% endblock %} 
 
 {% block content %}
-    <div class="row">
-        <div class="col1">
-            Test 123
-        </div>
-    </div>
+    <h1>Listado de Equipos</h1>
+
+    <ul>
+        {% for equipo in equipos %}
+            <li><a href="{{ equipo.url }}">{{ equipo.title }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}

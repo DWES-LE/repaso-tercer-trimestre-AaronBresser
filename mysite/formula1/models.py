@@ -8,7 +8,6 @@ from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.search import index
 
 
-
 class Equipo(Page):
 
     # Database fields
@@ -27,7 +26,6 @@ class Equipo(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-
 
     # Search index configuration
 
