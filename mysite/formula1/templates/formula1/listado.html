@@ -5,11 +5,12 @@
 {% block body_class %}template-listado{% endblock %}
 
 {% block content %}
+    <br>
     <h1 class="text-center">{{ page.title }}</h1>
-    <hr>
+    <br>
     {% for post in listadopages %}
         {% with post=post.specific %}
-            <div class="container">
+            <div class="container border border-primary rounded p-3 mb-3">
                 <div class="d-flex align-items-center">
                     {% with post.feed_image as feed_image %}
                         {% if feed_image %}
@@ -17,9 +18,8 @@
                             <img src="{{ img.url }}" alt="{{ post.title }}" style="max-width:70px; margin-right: 10px;">
                         {% endif %}
                     {% endwith %}
-                    <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+                    <h4><a href="{% pageurl post %}">{{ post.title }}</a></h4>
                 </div>
-                <hr class="hr hr-blurry" />
             </div>
         {% endwith %}
     {% endfor %}
