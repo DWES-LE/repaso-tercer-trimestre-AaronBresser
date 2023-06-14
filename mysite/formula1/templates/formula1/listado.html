@@ -1,25 +1,29 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block body_class %}template-listado{% endblock %} 
+{% block body_class %}template-listado{% endblock %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
-
-    <div class="intro">{{ page.jefe_equipo|richtext }}</div>
-
+    <h1 class="text-center">{{ page.title }}</h1>
+    <hr>
     {% for post in listadopages %}
-    {% with post=post.specific %}
-        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-
-        {% with post.main_image as main_image %}
-            {% if main_image %}{% image main_image fill-160x100 %}{% endif %}
+        {% with post=post.specific %}
+            <div class="container">
+                <div class="d-flex align-items-center">
+                    {% with post.feed_image as feed_image %}
+                        {% if feed_image %}
+                            {% image feed_image fill-160x100 as img %}
+                            <img src="{{ img.url }}" alt="{{ post.title }}" style="max-width:70px; margin-right: 10px;">
+                        {% endif %}
+                    {% endwith %}
+                    <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+                </div>
+                <hr class="hr hr-blurry" />
+            </div>
         {% endwith %}
-
-        <p>{{ post.title }}</p>
-        {{ post.jefe_equipo|richtext }}
-    {% endwith %}
-{% endfor %}
-
+    {% endfor %}
+    <div class="container">
+        <p class="text-end"><a href="{{ page.get_parent.url }}">Volver a la página de inicio</a></p>
+    </div>
 {% endblock %}
