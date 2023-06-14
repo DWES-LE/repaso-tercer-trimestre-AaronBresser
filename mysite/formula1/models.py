@@ -8,6 +8,17 @@ from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.search import index
 
 
+
+class Listado(Page):
+    jefe_equipo = RichTextField(blank=True)
+
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super().get_context(request)
+        listadopages = self.get_children().live().order_by('-first_published_at')
+        context['listadopages'] = listadopages
+        return context
+
 class Equipo(Page):
 
     # Database fields
@@ -53,28 +64,3 @@ class Equipo(Page):
         FieldPanel('campeonatos'),
     ]
 
-
-    # Parent page / subpage type rules
-
-    parent_page_types = ['formula1.Listado']
-    subpage_types = []
-
-
-class Listado(Page):
-
-    body = RichTextField()
-
-
-    # Search index configuration
-
-    search_fields = Page.search_fields + [
-        index.SearchField('body'),
-
-    ]
-
-
-    # Editor panels configuration
-
-    content_panels = Page.content_panels + [
-        FieldPanel('body'),
-    ]
