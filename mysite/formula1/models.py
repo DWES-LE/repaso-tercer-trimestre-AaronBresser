@@ -1,10 +1,12 @@
 from django.db import models
 
-from modelcluster.fields import ParentalKey
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
+from django import forms
 
 from wagtail.models import Page, Orderable
 from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.snippets.models import register_snippet
 from wagtail.search import index
 
 
@@ -30,6 +32,7 @@ class Equipo(Page):
     motor = models.CharField(max_length=255, blank=True, null=True)
     pilotos = models.CharField(max_length=255, blank=True, null=True)
     campeonatos = models.IntegerField(blank=True, null=True)
+    categories = ParentalManyToManyField('formula1.ChampCategory', blank=True)
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -62,5 +65,25 @@ class Equipo(Page):
         FieldPanel('motor'),
         FieldPanel('pilotos'),
         FieldPanel('campeonatos'),
+        FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
     ]
+
+@register_snippet
+class ChampCategory(models.Model):
+    nombre = models.CharField(max_length=255)
+    icono = models.ForeignKey(
+        'wagtailimages.Image', null=True, blank=True,
+        on_delete=models.SET_NULL, related_name='+'
+    )
+
+    panels = [
+        FieldPanel('nombre'),
+        FieldPanel('icono'),
+    ]
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name_plural = 'champ categories'
 
