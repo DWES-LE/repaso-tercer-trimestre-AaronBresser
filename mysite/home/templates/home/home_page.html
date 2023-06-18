@@ -13,13 +13,13 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="{% static 'images/f1cars3.jpg' %}" style="width: 800px; height: 800px;" class="d-block w-100" alt="Image 1">
+            <img src="{% static 'images/f1cars3.jpg' %}" style="width: 900px; height: 900px;" class="d-block w-100" alt="Image 1">
         </div>
         <div class="carousel-item">
-            <img src="{% static 'images/f1cars2.jpg' %}" style="width: 800px; height: 800px;" class="d-block w-100" alt="Image 2">
+            <img src="{% static 'images/f1cars2.jpg' %}" style="width: 900px; height: 900px;" class="d-block w-100" alt="Image 2">
         </div>
         <div class="carousel-item">
-            <img src="{% static 'images/f1start.jpg' %}" style="width: 800px; height: 800px;" class="d-block w-100" alt="Image 3">
+            <img src="{% static 'images/f1start.jpg' %}" style="width: 900px; height: 900px;" class="d-block w-100" alt="Image 3">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -33,7 +33,26 @@
 </div>
 <br>
     <center>
-    <h2>Página de información sobre la Fórmula 1</h2>
+    <h2>Últimas novedades sobre la Fórmula 1</h2>
     </center>
+
+    <div class="card-group">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/alonso.jpg' %}" alt="Card image cap" style="width: 1000px; height: 600px;">
+          <div class="card-body">
+            <h5 class="card-title">Alonso, más contento que nunca</h5>
+            <p class="card-text">Con el nuevo Aston Martin y firmando podios en la mayoría de las carreras, el asturiano se siente muy cómodo en el coche y pretende que la 33 llegue este año...</p>
+            <p class="card-text"><small class="text-muted">Subido hace 3 mins</small></p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/mv.jpg' %}" alt="Card image cap" style="width: 1000px; height: 600px;">
+          <div class="card-body">
+            <h5 class="card-title">Verstappen, imparable</h5>
+            <p class="card-text">El holandés, bicampeón del mundo, está rumbo a conseguir su tercer titulo mundial, habiendo igualado al mismísimo Ayrton Senna con 41 victorias y firmando una temporada excepcional...</p>
+            <p class="card-text"><small class="text-muted">Subido hace 17 mins</small></p>
+          </div>
+        </div>
+      </div>
   
 {% endblock %}

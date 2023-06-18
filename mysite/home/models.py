@@ -11,3 +11,16 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('body'),
     ]
+
+class ContactPage(Page):
+    intro = RichTextField(blank=True)
+    email = models.EmailField()
+    telefono = models.CharField(max_length=20)
+    direccion = models.CharField(max_length=255)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full"),
+        FieldPanel('email'),
+        FieldPanel('telefono'),
+        FieldPanel('direccion'),
+    ]
