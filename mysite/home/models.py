@@ -24,3 +24,11 @@ class ContactPage(Page):
         FieldPanel('telefono'),
         FieldPanel('direccion'),
     ]
+
+class AcercaDe(Page):
+    body = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body'),
+    ]
+

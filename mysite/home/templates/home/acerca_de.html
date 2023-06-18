@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="about-container">
+    <h1>{{ page.title }}</h1>
+    <p class="about-paragraph">{{ page.body }}</p>
+  </div>
+
+  <style>
+    .about-container {
+      max-width: 800px;
+      margin: 110px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .about-paragraph {
+      margin-top: 20px;
+    }
+  </style>
+{% endblock %}
