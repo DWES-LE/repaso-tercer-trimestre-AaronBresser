@@ -26,7 +26,7 @@ class ContactPage(Page):
     ]
 
 class AcercaDe(Page):
-    body = RichTextField(blank=True)
+    body = models.CharField(max_length=20000, blank=True, null=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('body'),
